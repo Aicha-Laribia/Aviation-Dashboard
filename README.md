@@ -360,16 +360,16 @@ This approach demonstrates ML engineering maturity: understanding data limitatio
 
 ---
 
-## 👤 About the Developer
+## About me
 
 **Aicha Laribia**  
 Data Science Student @ INSEA  
 *Passionate about applying AI/ML*
 
 **Contact:**
-- 📧 Email: aichalaribia9@gmail.com
-- 💼 LinkedIn: [linkedin.com/in/aichalaribia](www.linkedin.com/in/aicha-laribia-7a6360273)
-- 🐙 GitHub: [github.com/aichalaribia](https://github.com/Aicha-Laribia)
+-  Email: aichalaribia9@gmail.com
+-  LinkedIn: [www.linkedin.com/in/aicha-laribia-7a6360273](www.linkedin.com/in/aicha-laribia-7a6360273)
+-  GitHub: [https://github.com/Aicha-Laribia](https://github.com/Aicha-Laribia)
 
 
 
