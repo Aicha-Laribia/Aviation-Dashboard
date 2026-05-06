@@ -116,7 +116,7 @@ A production-ready web application that tracks live flights over Morocco, collec
 
 
 ### Model Training & Evaluation
-```python
+
 # 9 models compared:
 XGBoost              → 62.4% accuracy (BEST)
 Random Forest        → 61.0% accuracy
@@ -141,7 +141,6 @@ Gaussian Naive Bayes → 57.7% accuracy
 > ⚖️ **Interpretation:**  
 > The model achieves balanced precision and recall, making it suitable for real-world delay prediction where both false positives (over-alerting) and false negatives (missed delays) carry operational cost.
 
----
 
 ### 🔍 Feature Importance (Top Drivers of Delay)
 
@@ -163,7 +162,7 @@ Gaussian Naive Bayes → 57.7% accuracy
 > 🧠 **Insight:**  
 > The model captures **temporal and operational patterns** rather than just static features, which aligns with real-world aviation delay dynamics.
 
----
+
 
 ## 🏗️ Architecture
 
@@ -213,7 +212,7 @@ Gaussian Naive Bayes → 57.7% accuracy
 └─────────────────────────────────────────────────────┘
 
 
----
+
 
 ## 🚀 Quick Start
 
