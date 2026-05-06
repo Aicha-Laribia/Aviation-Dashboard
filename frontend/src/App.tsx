@@ -2,13 +2,14 @@ import React from 'react';
 import LiveMap from './components/LiveMap';
 import DelayPredictor from './components/DelayPredictor';
 import FlightCharts from './components/FlightCharts';
-import FlightTable from './components/FlightTable'; // <-- On ramène le tableau des records !
-import StatCards from './components/StatCards';     // <-- On ramène les statistiques !
+import FlightTable from './components/FlightTable'; 
+import StatCards from './components/StatCards';     
 
 export default function App() {
   return (
     <div style={{
-      minHeight: '100vh',
+      minHeight: '100%',        // <-- Fixed the background cut-off!
+      overflow: 'auto',         // <-- Added to ensure full scrolling
       width: '100%',
       backgroundImage: 'linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop")',
       backgroundSize: 'cover',
@@ -46,13 +47,14 @@ export default function App() {
           <FlightCharts />
         </div>
 
-        {/* Et enfin, les records en direct (le tableau) en bas ! */}
+        {/* Le tableau : White, semi-transparent, black text */}
         <div style={{ 
-          background: 'rgba(126, 131, 146, 0.9)', 
+          background: 'rgba(255, 255, 255, 0.3)', // <-- White frosted glass
           backdropFilter: 'blur(10px)',
           borderRadius: '16px', 
           padding: '24px',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+          color: '#000000' // <-- Black writing
         }}>
           <FlightTable />
         </div>

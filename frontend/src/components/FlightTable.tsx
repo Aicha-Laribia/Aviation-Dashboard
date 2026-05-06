@@ -10,15 +10,14 @@ export default function FlightTable() {
 
   return (
     <div style={{ overflowX: "auto" }}>
-      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px" }}>
-        <thead>
-          <tr style={{ background: "#555e72", textAlign: "center" }}>
-            <th style={th}>Callsign</th>
-            <th style={th}>Country</th>
-            <th style={th}>Altitude (m)</th>
-            <th style={th}>Speed (m/s)</th>
-            <th style={th}>Heading</th>
-            <th style={th}>On ground</th>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px"}}>
+        <thead style={{ background: 'rgba(0, 0, 0, 0.05)' }}>
+          <tr>
+            <th style={{ padding: '12px', textAlign: 'center', fontWeight: 'bold', color: '#000' }}>Callsign</th>
+            <th style={{ padding: '12px', textAlign: 'center', fontWeight: 'bold', color: '#000' }}>Country</th>
+            <th style={{ padding: '12px', textAlign: 'center', fontWeight: 'bold', color: '#000' }}>Altitude (m)</th>
+            <th style={{ padding: '12px', textAlign: 'center', fontWeight: 'bold', color: '#000' }}>Speed (km/h)</th>
+            <th style={{ padding: '12px', textAlign: 'center', fontWeight: 'bold', color: '#000' }}>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +27,6 @@ export default function FlightTable() {
               <td style={td}>{f.origin_country}</td>
               <td style={td}>{f.altitude_m?.toFixed(0) ?? "—"}</td>
               <td style={td}>{f.velocity_ms?.toFixed(1) ?? "—"}</td>
-              <td style={td}>{f.heading?.toFixed(1) ?? "—"}</td>
               <td style={td}>{f.on_ground ? "Yes" : "No"}</td>
             </tr>
           ))}
