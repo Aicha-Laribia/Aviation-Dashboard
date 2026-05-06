@@ -106,7 +106,7 @@ A production-ready web application that tracks live flights over Morocco, collec
 ## 📊 Machine Learning Pipeline
 
 ### Dataset Generation
-```text
+
 80,000 synthetic flight records
 ├── Based on Royal Air Maroc's actual statistics (72% on-time rate)
 ├── Realistic patterns: peak seasons, busy days, time-of-day effects
