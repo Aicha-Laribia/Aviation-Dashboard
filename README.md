@@ -107,12 +107,13 @@ A production-ready web application that tracks live flights over Morocco, collec
 
 ### Dataset Generation
 
+```text
 80,000 synthetic flight records
 ├── Based on Royal Air Maroc's actual statistics (72% on-time rate)
 ├── Realistic patterns: peak seasons, busy days, time-of-day effects
 ├── 8 features: origin, destination, airline, month, day, hour, distance, route type
 └── Balanced distribution: 69% on-time, 31% delayed
-
+```
 
 
 ### Model Training & Evaluation
@@ -166,6 +167,7 @@ Gaussian Naive Bayes → 57.7% accuracy
 
 ## 🏗️ Architecture
 
+```text
 ┌─────────────────────────────────────────────────────┐
 │                   USER BROWSER                      │
 │              (React + TypeScript SPA)               │
@@ -210,7 +212,7 @@ Gaussian Naive Bayes → 57.7% accuracy
 │  • Morocco bounding box filter                      │
 │  • No authentication required                       │
 └─────────────────────────────────────────────────────┘
-
+```
 
 
 
@@ -267,7 +269,7 @@ The map will start populating with flight data automatically within 60 seconds.
 
 ## 📂 Project Structure
 
-aviation-dashboard/
+```aviation-dashboard/
 ├── backend/
 │   ├── app/
 │   │   ├── main.py              # FastAPI entry point
@@ -299,7 +301,7 @@ aviation-dashboard/
 ├── screenshots/
 ├── README.md
 └── docker-compose.yml
-
+```
 ---
 
 ## 🔬 Technical Highlights
@@ -361,8 +363,8 @@ This approach demonstrates ML engineering maturity: understanding data limitatio
 ## 👤 About the Developer
 
 **Aicha Laribia**  
-Data Science & Software Engineering Student @ INSEA  
-*Passionate about applying AI/ML to aviation and aerospace challenges*
+Data Science Student @ INSEA  
+*Passionate about applying AI/ML*
 
 **Contact:**
 - 📧 Email: aichalaribia9@gmail.com
