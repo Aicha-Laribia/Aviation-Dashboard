@@ -368,16 +368,11 @@ Data Science Student @ INSEA
 
 **Contact:**
 - 📧 Email: aichalaribia9@gmail.com
-- 💼 LinkedIn: [linkedin.com/in/aichalaribia](https://linkedin.com/in/aichalaribia)
-- 🐙 GitHub: [github.com/aichalaribia](https://github.com/aichalaribia)
-- 📍 Location: Casablanca/Rabat, Morocco
+- 💼 LinkedIn: [linkedin.com/in/aichalaribia](www.linkedin.com/in/aicha-laribia-7a6360273)
+- 🐙 GitHub: [github.com/aichalaribia](https://github.com/Aicha-Laribia)
 
 
----
 
-<p align="center">
-  <strong>Built with ❤️ for the aviation industry</strong><br>
-  <sub>May 2026 | Casablanca, Morocco</sub>
-</p>
+
 
 
