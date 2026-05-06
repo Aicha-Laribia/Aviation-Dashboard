@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import LiveMap from './components/LiveMap';
 import DelayPredictor from './components/DelayPredictor';
 import FlightCharts from './components/FlightCharts';

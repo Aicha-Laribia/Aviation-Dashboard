@@ -37,5 +37,4 @@ export default function FlightTable() {
 }
 
 // Reusable cell styles
-const th: React.CSSProperties = { padding: "10px 12px", fontWeight: 500 };
-const td: React.CSSProperties = { padding: "10px 12px" };
+const td: React.CSSProperties = { padding: "12px", textAlign: 'center' };
