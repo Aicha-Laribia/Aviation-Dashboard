@@ -19,7 +19,7 @@ export default function StatCards() {
 function Card({ label, value }: { label: string; value: number }) {
   return (
     <div style={{
-      background: "#f8f9fa",
+      background: "#576d7f",
       borderRadius: "8px",
       padding: "16px 24px",
       flex: 1,
@@ -27,7 +27,7 @@ function Card({ label, value }: { label: string; value: number }) {
       border: "1px solid #e9ecef"
     }}>
       <div style={{ fontSize: "28px", fontWeight: 600 }}>{value}</div>
-      <div style={{ fontSize: "13px", color: "#868e96", marginTop: "4px" }}>{label}</div>
+      <div style={{ fontSize: "13px", color: "#ffffff", marginTop: "4px" }}>{label}</div>
     </div>
   );
 }

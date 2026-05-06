@@ -5,8 +5,10 @@ from app.services.opensky import fetch_flights
 from app.database import init_db, get_db
 from app.models import Flight
 from app.scheduler import scheduler, collect_morocco_flights
+from app.routers import predictions
 
 app = FastAPI(title="Aviation Analytics API")
+app.include_router(predictions.router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,10 +20,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.on_event("startup")
 async def startup():
     init_db()  # create tables if they don't exist
-    
+
     # Add the job: run collect_morocco_flights every 60 seconds
     scheduler.add_job(
         collect_morocco_flights,

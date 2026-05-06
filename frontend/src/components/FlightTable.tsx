@@ -12,7 +12,7 @@ export default function FlightTable() {
     <div style={{ overflowX: "auto" }}>
       <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px" }}>
         <thead>
-          <tr style={{ background: "#f1f3f5", textAlign: "left" }}>
+          <tr style={{ background: "#555e72", textAlign: "center" }}>
             <th style={th}>Callsign</th>
             <th style={th}>Country</th>
             <th style={th}>Altitude (m)</th>
@@ -23,7 +23,7 @@ export default function FlightTable() {
         </thead>
         <tbody>
           {flights.map((f: Flight, i: number) => (
-            <tr key={f.icao24 + i} style={{ borderBottom: "1px solid #e9ecef" }}>
+            <tr key={f.icao24 + i} style={{ borderBottom: "1px solid #d6dae3" }}>
               <td style={td}>{f.callsign ?? "—"}</td>
               <td style={td}>{f.origin_country}</td>
               <td style={td}>{f.altitude_m?.toFixed(0) ?? "—"}</td>

@@ -1,16 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import App from "./App";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query' // <-- L'IMPORT MANQUANT EST LÀ !
+import App from './App.tsx'
 
-// QueryClient is the brain of react-query
-// It manages the cache for all your API calls
-const queryClient = new QueryClient();
+// L'import global du CSS pour la carte Leaflet
+import 'leaflet/dist/leaflet.css' 
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+// (Garde cet import si tu as un fichier index.css, sinon tu peux l'enlever)
+import './index.css' 
+
+// Initialisation du client React Query
+const queryClient = new QueryClient()
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
-  </React.StrictMode>
-);
+  </React.StrictMode>,
+)

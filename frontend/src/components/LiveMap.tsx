@@ -1,18 +1,10 @@
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useFlights } from "../hooks/useFlights";
 import type { Flight } from "../api/flights";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { useEffect } from "react";
 
-// -------------------------------------------------------
-// WHY THIS BLOCK?
-// Leaflet was built before modern bundlers like Vite existed.
-// It tries to load marker icons from a folder that doesn't
-// exist in Vite's build output. This block manually tells
-// Leaflet where the icons are. Without it you get broken
-// grey boxes instead of map markers.
-// -------------------------------------------------------
+// Correction pour les icônes par défaut de Leaflet avec Vite
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
@@ -20,38 +12,40 @@ L.Icon.Default.mergeOptions({
   shadowUrl:     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
-// Custom airplane icon — more visual than the default pin
-const planeIcon = L.divIcon({
-  className: "",
-  html: `<div style="font-size:20px;transform:rotate(0deg)">✈</div>`,
-  iconSize: [24, 24],
-  iconAnchor: [12, 12],
-});
-
-// This component rotates each plane icon to match its heading
-// We need it as a separate component because it uses a Leaflet hook
 function RotatedPlane({ flight }: { flight: Flight }) {
+  const rotation = (flight.heading ?? 0) - 45;
+  
   const icon = L.divIcon({
-    className: "",
-    // heading is the direction the plane is flying in degrees
-    // CSS transform rotates the emoji to point the right way
-    html: `<div style="font-size:20px;transform:rotate(${flight.heading ?? 0}deg)">✈</div>`,
-    iconSize: [24, 24],
-    iconAnchor: [12, 12],
+    className: "", 
+    html: `
+      <div style="
+        transform: rotate(${rotation}deg);
+        filter: drop-shadow(0px 3px 4px rgba(0,0,0,0.3));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#2563eb" stroke="#1e40af" stroke-width="1.5">
+          <path d="M21,16v-2l-8-5V3.5c0-0.83-0.67-1.5-1.5-1.5S10,2.67,10,3.5V9l-8,5v2l8-2.5V19l-2,1.5V22l3.5-1l3.5,1v-1.5L13,19v-5.5L21,16z"/>
+        </svg>
+      </div>
+    `,
+    iconSize: [26, 26],
+    iconAnchor: [13, 13], 
   });
 
   return (
     <Marker position={[flight.latitude, flight.longitude]} icon={icon}>
-      {/* Popup appears when you click the plane */}
       <Popup>
-        <div style={{ fontSize: "13px", lineHeight: "1.8" }}>
-          <strong>{flight.callsign ?? "Unknown"}</strong><br />
+        <div style={{ fontSize: "13px", lineHeight: "1.8", minWidth: "140px" }}>
+          <strong style={{ fontSize: "15px", color: "#0f172a" }}>{flight.callsign ?? "UNKNOWN"}</strong><br />
           🌍 {flight.origin_country}<br />
-          📡 {flight.icao24}<br />
+          📡 <span style={{ fontFamily: "monospace" }}>{flight.icao24}</span><br />
           ↕ {flight.altitude_m?.toFixed(0) ?? "—"} m<br />
-          💨 {flight.velocity_ms?.toFixed(1) ?? "—"} m/s<br />
-          🧭 {flight.heading?.toFixed(1) ?? "—"}°<br />
-          {flight.on_ground ? "🛬 On ground" : "🛫 Airborne"}
+          💨 {flight.velocity_ms ? `${(flight.velocity_ms * 3.6).toFixed(0)} km/h` : "—"}<br />
+          <div style={{ marginTop: "8px", fontWeight: "bold", color: flight.on_ground ? "#dc2626" : "#16a34a" }}>
+            {flight.on_ground ? "🛬 On ground" : "🛫 Airborne"}
+          </div>
         </div>
       </Popup>
     </Marker>
@@ -61,44 +55,30 @@ function RotatedPlane({ flight }: { flight: Flight }) {
 export default function LiveMap() {
   const { data: flights, isLoading } = useFlights();
 
-  if (isLoading) return <p>Loading map...</p>;
+  if (isLoading) return <p style={{ color: "#64748b" }}>Loading airspace data...</p>;
 
   return (
     <div style={{ marginBottom: "32px" }}>
-      <h2 style={{ fontSize: "16px", fontWeight: 500, marginBottom: "12px" }}>
-        Live flights over Morocco
-        <span style={{ 
-          marginLeft: "10px", 
-          fontSize: "12px", 
-          color: "#868e96",
-          fontWeight: 400 
-        }}>
-          {flights?.length ?? 0} aircraft · updates every 30s
-        </span>
+      <h2 style={{ fontSize: "18px", fontWeight: 600, color: "#ffffff", marginBottom: "16px" }}>
+          Live flights over Morocco ...
       </h2>
 
-      {/* 
-        MapContainer — the main Leaflet map component
-        center = [lat, lng] of Morocco
-        zoom = how zoomed in (1=world, 18=street level, 6 is good for a country)
-        style height is required — without it the map renders as 0px tall
-      */}
       <MapContainer
         center={[31.5, -7.0]}
         zoom={6}
-        style={{ height: "450px", borderRadius: "8px", border: "1px solid #e9ecef" }}
+        style={{ 
+          height: "650px", // <-- J'ai agrandi la carte ici (c'était 450px)
+          borderRadius: "12px", 
+          border: "1px solid #cbd5e1",
+          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+          zIndex: 0
+        }}
       >
-        {/* 
-          TileLayer — this loads the actual map tiles (the visual map)
-          OpenStreetMap is free and requires no API key
-          attribution is legally required by OSM's license
-        */}
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         />
 
-        {/* Render one marker per flight */}
         {flights?.map((flight) => (
           <RotatedPlane key={flight.icao24} flight={flight} />
         ))}
