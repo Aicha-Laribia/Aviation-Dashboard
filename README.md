@@ -4,9 +4,6 @@
 
 A production-ready web application that tracks live flights over Morocco, collects historical data, and uses machine learning to predict flight delays with industry-leading accuracy.
 
-**🔗 Live Demo:** [coming soon - deployed to Railway + Vercel]  
-**📧 Contact:** aichalaribia9@gmail.com | [LinkedIn](https://linkedin.com/in/aichalaribia)
-
 ---
 
 ## 📸 Project Screenshots
